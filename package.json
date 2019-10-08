@@ -1,0 +1,43 @@
+{
+  "name": "arcgis-2d-spa-template",
+  "version": "0.0.1",
+  "description": "Template for ArcGIS API single page application",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "webpack",
+    "watch": "webpack -w",
+    "lint": "tslint --fix --project ."
+  },
+  "author": "Jeff Jacobson",
+  "private": true,
+  "license": "Unlicense",
+  "devDependencies": {
+    "@types/arcgis-js-api": "^4.12.0",
+    "prettier": "^1.18.2",
+    "source-map": "^0.7.3",
+    "ts-loader": "^6.2.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WSDOT-GIS/arcgis-2d-spa-template.git"
+  },
+  "keywords": [
+    "arcgis",
+    "template",
+    "WSDOT",
+    "map",
+    "spa",
+    "single-page-app"
+  ],
+  "bugs": {
+    "url": "https://github.com/WSDOT-GIS/arcgis-2d-spa-template/issues"
+  },
+  "homepage": "https://github.com/WSDOT-GIS/arcgis-2d-spa-template#readme"
+}
