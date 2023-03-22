@@ -14,8 +14,10 @@ More information about templates can be found in this [GitHub blog: Generate new
 
 1. Clone this repository to your computer's hard drive.
 2. Remove the remote repository
+
     ```cmd
     git remote remove origin
     ```
+
 3. Update the information in the `package.json` file with your own project's information.
 4. Add your remote using the `git remote` command.

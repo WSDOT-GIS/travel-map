@@ -1,27 +1,19 @@
-import Extent from "esri/geometry/Extent";
-import EsriMap from "esri/Map";
-import MapView from "esri/views/MapView";
-import Search from "esri/widgets/Search";
+import EsriMap from "@arcgis/core/Map";
+import MapView from "@arcgis/core/views/MapView";
+import Search from "@arcgis/core/widgets/Search";
+import LocatorSearchSource from "@arcgis/core/widgets/Search/LocatorSearchSource";
+import waExtent from "./WAExtent";
+
+import "./index.css";
 
 const map = new EsriMap({
-  basemap: "topo-vector"
-});
-
-/**
- * The extent of WA.
- * @see {https://epsg.io/1416-area}
- */
-const waExtent = new Extent({
-  xmin: -124.79,
-  ymin: 45.54,
-  xmax: -116.91,
-  ymax: 49.05
+  basemap: "topo-vector",
 });
 
 const view = new MapView({
   container: "viewDiv",
   map,
-  extent: waExtent
+  extent: waExtent,
 });
 
 const search = new Search({
@@ -31,17 +23,14 @@ const search = new Search({
   // true and remove the "sources" property.
   includeDefaultSources: false,
   sources: [
-    {
-      locator: {
-        url:
-          "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-      },
+    new LocatorSearchSource({
+      url: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
       filter: {
-        geometry: waExtent
-      } as __esri.SearchSourceFilter,
-      countryCode: "US"
-    } as __esri.LocatorSearchSource
-  ]
+        geometry: waExtent,
+      },
+      countryCode: "US",
+    }),
+  ],
 });
 
 view.ui.add(search, "top-right");

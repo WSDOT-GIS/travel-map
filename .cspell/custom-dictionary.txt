@@ -1,0 +1,8 @@
+# Custom Dictionary Words
+arcgis
+topo
+WSDOT
+xmin
+ymin
+xmax
+ymax
