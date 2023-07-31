@@ -1,8 +1,14 @@
 # Custom Dictionary Words
 arcgis
+daltonic
+EPSG
+nojekyll
 topo
+uval
+wkid
+WRIA
 WSDOT
-xmin
-ymin
 xmax
+xmin
 ymax
+ymin
