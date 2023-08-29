@@ -1,6 +1,10 @@
 # Template: Single page mapping application using ArcGIS API for JavaScript
 
-This is a starter application for creating a single page map application using the ArcGIS API for JavaScript, which is built using Webpack and TypeScript.
+This is a starter application for creating a single page map application using the [ArcGIS Maps SDK for JavaScript], which is built using [Vite] and [TypeScript].
+
+[Vite]:https://vitejs.dev/
+[TypeScript]:https://www.typescriptlang.org/
+[ArcGIS Maps SDK for JavaScript]:https://developers.arcgis.com/javascript/latest/
 
 ## Use
 
