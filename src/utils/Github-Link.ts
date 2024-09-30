@@ -8,26 +8,29 @@ export const githubPagesUrlRe =
 export type GithubRepoUrl = `https://www.github.com/${string}/${string}`;
 export type GithubPagesUrl = `https://${string}.github.io/${string}`;
 
+
+export function getGithubUrlFromGithubPages(
+  throwErrorOnMismatch: true,
+  githubPagesUrl?: GithubPagesUrl,
+): GithubRepoUrl;
+export function getGithubUrlFromGithubPages(
+  throwErrorOnMismatch?: false,
+  githubPagesUrl?: GithubPagesUrl,
+): GithubRepoUrl | null;
 /**
  * Get the source URL of a Github Pages page.
  * @param throwErrorOnMismatch - If true, throw an error if URL can't
+ * @param githubPagesUrl - Specify the GitHub Pages URL if you don't
+ * want to use the default of location.href.
  * be parsed. Otherwise, null will be returned.
  * @returns A URL
  */
 export function getGithubUrlFromGithubPages(
-  throwErrorOnMismatch: true,
-  githubPagesUrl?: GithubPagesUrl
-): GithubRepoUrl;
-export function getGithubUrlFromGithubPages(
-  throwErrorOnMismatch?: false,
-  githubPagesUrl?: GithubPagesUrl
-): GithubRepoUrl | null;
-export function getGithubUrlFromGithubPages(
   throwErrorOnMismatch?: boolean,
-  githubPagesUrl?: GithubPagesUrl
+  githubPagesUrl?: GithubPagesUrl,
 ) {
   const currentUrl = githubPagesUrl ?? location.href;
-  const match = currentUrl.match(githubPagesUrlRe);
+  const match = githubPagesUrlRe.exec(currentUrl);
   if (!match) {
     if (throwErrorOnMismatch) {
       throw new Error("Could not parse source URL from this page");
@@ -35,7 +38,7 @@ export function getGithubUrlFromGithubPages(
       return null;
     }
   }
-  const [org, repo] = [...match].slice(1).map(s => s.toLowerCase());
+  const [org, repo] = [...match].slice(1).map((s) => s.toLowerCase());
   return `https://github.com/${org}/${repo}` as GithubRepoUrl;
 }
 
@@ -46,13 +49,13 @@ export function getGithubUrlFromGithubPages(
  * @returns An HTML anchor linking to app source code.
  */
 export function createGithubLink(
-  fallbackUrl = "https://github.com/wsdot-gis/wsdot-mp-map"
+  fallbackUrl = "https://github.com/wsdot-gis/wsdot-mp-map",
 ) {
   // const githubSvg = convertSimpleIconToSvgElement(siGithub);
   const a = document.createElement("a");
   // a.append(githubSvg);
   a.textContent = "Source code";
-  a.href = getGithubUrlFromGithubPages() || fallbackUrl;
+  a.href = getGithubUrlFromGithubPages() ?? fallbackUrl;
   a.target = "_blank";
   return a;
 }
