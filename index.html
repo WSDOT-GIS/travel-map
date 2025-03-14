@@ -29,21 +29,27 @@
 
 <body class="calcite-mode-auto">
   <arcgis-map basemap="hybrid" center="-120.85,47.295" zoom="7">
+
     <arcgis-zoom position="top-leading"> </arcgis-zoom>
+    <arcgis-home position="top-leading"></arcgis-home>
+    <arcgis-locate position="top-leading"></arcgis-locate>
+
+
     <arcgis-expand position="top-trailing">
       <arcgis-search></arcgis-search>
     </arcgis-expand>
-    <arcgis-home position="top-leading"></arcgis-home>
     <arcgis-expand position="top-trailing">
       <arcgis-layer-list></arcgis-layer-list>
     </arcgis-expand>
     <arcgis-expand position="top-trailing">
       <arcgis-legend />
     </arcgis-expand>
-    <arcgis-scale-bar position="bottom-leading" unit="dual"></arcgis-scale-bar>
     <arcgis-expand position="top-trailing">
       <arcgis-basemap-gallery></arcgis-basemap-gallery>
     </arcgis-expand>
+
+    <arcgis-scale-bar position="bottom-leading" unit="dual"></arcgis-scale-bar>
+    
   </arcgis-map>
   <script type="module" src="/src/main.ts"></script>
 </body>
