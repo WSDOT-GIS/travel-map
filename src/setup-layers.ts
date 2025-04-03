@@ -5,10 +5,10 @@ export async function addLayersToMap(
 	this: ArcgisMap,
 	event: ArcgisMapCustomEvent<void>,
 ) {
-	// Dynamically import the FeatureLayer class.
-	const { default: FeatureLayer } = await import(
-		"@arcgis/core/layers/FeatureLayer"
+	const FeatureLayer = await window.$arcgis.import<typeof __esri.FeatureLayer>(
+		"@arcgis/core/layers/FeatureLayer.js",
 	);
+
 	const cityLimitsLayer = new FeatureLayer({
 		title: "City Limits",
 		portalItem: {
