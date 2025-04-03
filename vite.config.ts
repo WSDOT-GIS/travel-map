@@ -16,11 +16,18 @@ async function getRepoName(): Promise<string> {
 	return repo;
 }
 
+const externalRegex = /@((arcgis)|(esri))\/.+/i;
+
 export default defineConfig(async (/*{command, mode, ssrBuild}*/) => {
 	// Get the name of the repository.
 	const repo = await getRepoName();
 	return {
 		// Set the URL base to the name of the repository.
 		base: `/${repo}/`,
+		build: {
+			rollupOptions: {
+				external: externalRegex,
+			},
+		},
 	};
 });
